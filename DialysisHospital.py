@@ -51,33 +51,60 @@ st.sidebar.markdown("""
 """)
 
 # County Selection
+counties = sorted(data['COUNTY'].unique())
 county = st.sidebar.selectbox(
     "🏙️ Select County:",
     options=["All", "Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret"],  # Replace with actual counties in your dataset
     help="Choose the county where you want to find a dialysis hospital."
 )
+# Filter data by selected county
+filtered_data = data[data['COUNTY'] == county]
+
 
 # NHIF Office Filter
 nhif_offices = sorted(filtered_data['NHIF_OFFICE'].unique())
-selected_office = st.sidebar.selectbox("Select NHIF Office (optional):", ['All Offices'] + nhif_offices)
+selected_office = st.sidebar.selectbox(
+    "🏢 Select NHIF Office:",
+    "Select NHIF Office (optional):", ['All Offices'] + nhif_offices)
 
 if selected_office != 'All Offices':
     filtered_data = filtered_data[filtered_data['NHIF_OFFICE'] == selected_office]
 
+
 # Search for hospital name
-search_name = st.sidebar.text_input("Search by Hospital Name (optional):")
+search_name = st.sidebar.text_input("🏥Search by Hospital Name (optional):")
 if search_name:
     filtered_data = filtered_data[filtered_data['HOSPITAL_NAME'].str.contains(search_name, case=False, na=False)]
 
 # Display Results with Enhanced UI
-st.subheader(f"Dialysis Hospitals in {selected_county}")
+st.subheader(f"Dialysis Hospitals in {county}")
 
 # If no hospitals are found, show a message
 if filtered_data.empty:
     st.warning("No hospitals found with the selected filters. Try refining your search.")
+    
+# Add a reset button
+if st.sidebar.button("🔄 Reset Filters"):
+    # Simulate resetting by reloading the app
+    st.experimental_rerun()    
+ 
+# Sidebar footer with an icon or note
+st.sidebar.markdown("""
+    ---
+    🤝 **Tip**: Use multiple filters together for a more refined search!
+""")    
 
 # Display the hospitals in a table
-st.dataframe(filtered_data[['HOSPITAL_NAME', 'NHIF_OFFICE', 'NHIF_HOSPITAL_CODE']], use_container_width=True)
+st.markdown("### 🏥 Recommended Dialysis Hospitals")
+st.markdown("""
+    Below is a list of dialysis hospitals based on your selected filters. 
+    Click on column headers to sort data or use the search options for a more refined view.
+""")
+st.dataframe(filtered_data[['HOSPITAL_NAME', 'NHIF_OFFICE', 'NHIF_HOSPITAL_CODE']], 
+             use_container_width=True,
+            height=400 
+            )
+
 
 # Add a footer or contact section
 st.markdown("""
