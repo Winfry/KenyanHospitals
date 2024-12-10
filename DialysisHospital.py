@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 
 # Load the dataset
-@st.cache
 def load_data():
     file_path = 'Dialysis-Facilities-Comprehensive (1).xlsx'
     data = pd.read_excel(file_path)
@@ -109,5 +108,13 @@ st.dataframe(filtered_data[['HOSPITAL_NAME', 'NHIF_OFFICE', 'NHIF_HOSPITAL_CODE'
 # Add a footer or contact section
 st.markdown("""
     ---
-    If you need assistance, feel free to reach out to us at **support@hospitalfinder.com**.
-    """)
+    ### Need Help? 💬
+    - **Contact Us**: For further assistance, email us at [support@hospitalfinder.com](mailto:support@hospitalfinder.com).
+    - **Frequently Asked Questions (FAQs)**: Visit our [FAQ page](https://hospitalfinder.com/faqs) for common queries.
+    - **Feedback**: We value your input! Let us know how we can improve by filling out [this form](https://hospitalfinder.com/feedback).
+    
+    ---
+    #### ❤️ Thank You for Using Our App!
+    We are committed to making healthcare accessible and seamless. 
+    Stay healthy and take care! 😊
+""")
