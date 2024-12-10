@@ -3,7 +3,8 @@ import pandas as pd
 
 # Load the dataset
 def load_data():
-    file_path = 'Dialysis-Facilities-Comprehensive (1).xlsx'
+    # Replace this path with the location of your dataset
+    file_path = 'Dialysis-Facilities.xlsx'
     data = pd.read_excel(file_path)
     data.columns = ['COUNTY', 'NHIF_OFFICE', 'NHIF_HOSPITAL_CODE', 'HOSPITAL_NAME']
     data = data.iloc[1:]  # Skip the first row with old headers
@@ -59,15 +60,11 @@ county = st.sidebar.selectbox(
 # Filter data by selected county
 filtered_data = data[data['COUNTY'] == county]
 
-
-# NHIF Office Filter
-nhif_offices = sorted(filtered_data['NHIF_OFFICE'].unique())
-selected_office = st.sidebar.selectbox(
+nhif_office = st.sidebar.selectbox(
     "🏢 Select NHIF Office:",
-    "Select NHIF Office (optional):", ['All Offices'] + nhif_offices)
-
-if selected_office != 'All Offices':
-    filtered_data = filtered_data[filtered_data['NHIF_OFFICE'] == selected_office]
+    options=["All", "NHIF Nairobi", "NHIF Mombasa", "NHIF Kisumu", "NHIF Nakuru"],  # Replace with actual NHIF offices
+    help="Filter hospitals by NHIF office affiliation."
+)
 
 
 # Search for hospital name
@@ -85,7 +82,7 @@ if filtered_data.empty:
 # Add a reset button
 if st.sidebar.button("🔄 Reset Filters"):
     # Simulate resetting by reloading the app
-    st.experimental_rerun()    
+    st.experimental_set_query_params(rerun=str(True))   
  
 # Sidebar footer with an icon or note
 st.sidebar.markdown("""
@@ -99,9 +96,9 @@ st.markdown("""
     Below is a list of dialysis hospitals based on your selected filters. 
     Click on column headers to sort data or use the search options for a more refined view.
 """)
+# Display the interactive table
 st.dataframe(filtered_data[['HOSPITAL_NAME', 'NHIF_OFFICE', 'NHIF_HOSPITAL_CODE']], 
              use_container_width=True,
-            height=400 
             )
 
 
