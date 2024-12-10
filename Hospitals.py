@@ -2,10 +2,9 @@ import streamlit as st
 import pandas as pd
 
 # Load the dataset
-@st.cache
 def load_data():
     # Replace this path with the location of your dataset
-    file_path = 'Dialysis-Facilities-Comprehensive (1).xlsx'
+    file_path = 'Dialysis-Facilities.xlsx'
     data = pd.read_excel(file_path)
     data.columns = ['COUNTY', 'NHIF_OFFICE', 'NHIF_HOSPITAL_CODE', 'HOSPITAL_NAME']
     data = data.iloc[1:]  # Skip the first row with old headers
