@@ -16,23 +16,46 @@ data = load_data()
 # App Title and Description
 st.set_page_config(page_title="Hospital Recommendation", page_icon="🏥", layout="wide")
 st.title("Welcome to the Hospital Recommendation System 🏥")
+st.image("Dialysis_Center.jpg", caption="Keeping The Kidneys Healthy!", use_column_width=True)
 st.markdown("""
-    This app helps you find dialysis hospitals in Kenya based on the county and your preferences.
-    Filter hospitals by county, NHIF office, or hospital name, and get the perfect recommendation for your needs!
+    # Welcome to the Hospital Finder App! 🏥
+
+    This app is designed to help you easily find dialysis hospitals across Kenya, tailored to your specific needs and preferences. Whether you're looking for a hospital based on its **county**, **NHIF office**, or **hospital name**, we've got you covered.
+
+    ## How It Works:
+    - **Filter by County**: Select your preferred county, and we'll show you all dialysis hospitals in that area.
+    - **Filter by NHIF Office**: If you have a specific NHIF office in mind, you can filter hospitals by their affiliated NHIF office for easier access.
+    - **Search by Hospital Name**: If you already know the name of the hospital, you can quickly find it using the search functionality.
+
+    ## Features:
+    - **Personalized Recommendations**: Based on your preferences, we will suggest the best dialysis hospitals that meet your criteria.
+    - **Easy Navigation**: With an intuitive user interface, you can quickly find the information you need without any hassle.
+    - **Comprehensive Data**: The database includes detailed information on hospitals, including their names, locations, and NHIF affiliations.
+
+    ## Why Use This App?
+    Finding a dialysis facility that fits your specific needs has never been easier! This app simplifies your search, ensuring that you can access the best hospitals in your area or any part of Kenya.
+
+    **Your health is important, and we’re here to help you make informed decisions for your well-being.**
+
+    Let's get started—just choose your preferences and let us help you find the perfect dialysis hospital for you!
 """)
+
 
 # Custom Sidebar
 st.sidebar.header("🔍 Filter Options")
 
-# Add an image to the sidebar
-st.sidebar.image('https://example.com/your_image.png', width=200)  # Replace with a real image URL or file path
+# Sidebar introduction
+st.sidebar.markdown("""
+    Use the filters below to customize your search for dialysis hospitals in Kenya. 
+    Narrow down your options based on county, NHIF office, or hospital name.
+""")
 
 # County Selection
-counties = sorted(data['COUNTY'].unique())
-selected_county = st.sidebar.selectbox("Select a County:", counties)
-
-# Filter data by selected county
-filtered_data = data[data['COUNTY'] == selected_county]
+county = st.sidebar.selectbox(
+    "🏙️ Select County:",
+    options=["All", "Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret"],  # Replace with actual counties in your dataset
+    help="Choose the county where you want to find a dialysis hospital."
+)
 
 # NHIF Office Filter
 nhif_offices = sorted(filtered_data['NHIF_OFFICE'].unique())
