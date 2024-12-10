@@ -54,7 +54,7 @@ st.sidebar.markdown("""
 counties = sorted(data['COUNTY'].unique())
 county = st.sidebar.selectbox(
     "🏙️ Select County:",
-    options=["All", "Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret"],  # Replace with actual counties in your dataset
+    counties,  # Replace with actual counties in your dataset
     help="Choose the county where you want to find a dialysis hospital."
 )
 # Filter data by selected county
