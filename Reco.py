@@ -24,9 +24,9 @@ def predict_diabetes(features):
 # Function to recommend hospitals based on user input
 def recommend_hospitals(county, hospital_type):
     if hospital_type == "Dialysis":
-        hospitals = dialysis_hospitals
+        hospitals = data
     else:
-        hospitals = general_hospitals
+        hospitals = data
 
     return hospitals[hospitals['County'].str.contains(county, case=False, na=False)]
 
