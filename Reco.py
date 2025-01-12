@@ -3,9 +3,7 @@ import pandas as pd
 import joblib
 
 # Load the machine learning model for diabetes prediction
-diabetes_model = joblib.load('diabetes_model.pkl')
-# loading the saved model
-loaded_model = pickle.load(open('trained_model.sav', 'rb'))
+diabetes_model = joblib.load(open('trained_model.sav', 'rb'))
 
 # Load hospital datasets
 dialysis_hospitals = pd.read_csv('dialysis_hospitals.csv')
