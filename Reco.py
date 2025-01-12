@@ -13,6 +13,8 @@ def load_data():
     data.columns = ['COUNTY', 'NHIF_OFFICE', 'NHIF_HOSPITAL_CODE', 'HOSPITAL_NAME']
     data = data.iloc[1:]  # Skip the first row with old headers
     return data
+# Load data
+data = load_data()
 
 # Function to predict diabetes
 def predict_diabetes(features):
