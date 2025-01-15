@@ -192,9 +192,9 @@ def main():
             st.subheader("Dialysis Hospitals in Your Area")
             filtered_hospitals = data[data['COUNTY'].str.contains(selected_county, case=False)]
         else:
-        st.subheader("General Hospitals in Your Area")
+            st.subheader("General Hospitals in Your Area")
             # If you have a separate dataset for general hospitals, integrate it here
-            filtered_hospitals = hospital_data[hospital_data['COUNTY'].str.contains(selected_county, case=False)]
+            filtered_hospitals = data[data['COUNTY'].str.contains(selected_county, case=False)]
 
     if filtered_hospitals.empty:
         st.warning("No hospitals found in the selected county.")
