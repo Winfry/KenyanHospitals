@@ -22,15 +22,6 @@ def predict_diabetes(features):
     prediction = diabetes_model.predict([features])
     return prediction[0]
 
-# Function to recommend hospitals based on user input
-def recommend_hospitals(county, hospital_type):
-    if hospital_type == "Dialysis":
-        hospitals = data
-    else:
-        hospitals = data
-
-    return hospitals[hospitals['County'].str.contains(county, case=False, na=False)]
-
 # Streamlit app
 def main():
     st.title("Unified Health App")
