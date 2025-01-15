@@ -179,22 +179,22 @@ def main():
           else:
             st.success("No Diabetes Detected!")
 
-    # Section 2: Hospital Recommendation
-    st.header("Hospital Recommendation")
-    st.markdown("""
-    Based on your diabetes prediction, here are hospital recommendations. Select your county to filter results.
+        # Section 2: Hospital Recommendation
+        st.header("Hospital Recommendation")
+        st.markdown("""
+        Based on your diabetes prediction, here are hospital recommendations. Select your county to filter results.
     """)
 
-    counties = sorted(hospital_data['COUNTY'].unique())
-    selected_county = st.selectbox("Select County:", counties)
+        counties = sorted(data['COUNTY'].unique())
+        selected_county = st.selectbox("Select County:", counties)
 
-    if prediction == 1:
-        st.subheader("Dialysis Hospitals in Your Area")
-        filtered_hospitals = hospital_data[hospital_data['COUNTY'].str.contains(selected_county, case=False)]
-    else:
+        if prediction == 1:
+            st.subheader("Dialysis Hospitals in Your Area")
+            filtered_hospitals = data[data['COUNTY'].str.contains(selected_county, case=False)]
+        else:
         st.subheader("General Hospitals in Your Area")
-        # If you have a separate dataset for general hospitals, integrate it here
-        filtered_hospitals = hospital_data[hospital_data['COUNTY'].str.contains(selected_county, case=False)]
+            # If you have a separate dataset for general hospitals, integrate it here
+            filtered_hospitals = hospital_data[hospital_data['COUNTY'].str.contains(selected_county, case=False)]
 
     if filtered_hospitals.empty:
         st.warning("No hospitals found in the selected county.")
