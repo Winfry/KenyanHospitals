@@ -119,7 +119,9 @@ def main():
         
         
         st.title('Diabetes Prediction Web App')
+        
         st.write('This web application is designed to predict whether a person is diabetic or not ')
+        
         name = st.text_input('Enter Your Name')
         email = st.text_input('Enter Your Email')
 
@@ -169,6 +171,36 @@ def main():
         </div>""",
         unsafe_allow_html=True
         ) 
+        
+        if st.button("Predict Diabetes"):
+    prediction = diabetes_model.predict([user_data])[0]  # Assuming binary output: 1 = Diabetes, 0 = No Diabetes
+    if prediction == 1:
+        st.error("Diabetes Detected!")
+    else:
+        st.success("No Diabetes Detected!")
+
+    # Section 2: Hospital Recommendation
+    st.header("Hospital Recommendation")
+    st.markdown("""
+    Based on your diabetes prediction, here are hospital recommendations. Select your county to filter results.
+    """)
+
+    counties = sorted(hospital_data['COUNTY'].unique())
+    selected_county = st.selectbox("Select County:", counties)
+
+    if prediction == 1:
+        st.subheader("Dialysis Hospitals in Your Area")
+        filtered_hospitals = hospital_data[hospital_data['COUNTY'].str.contains(selected_county, case=False)]
+    else:
+        st.subheader("General Hospitals in Your Area")
+        # If you have a separate dataset for general hospitals, integrate it here
+        filtered_hospitals = hospital_data[hospital_data['COUNTY'].str.contains(selected_county, case=False)]
+
+    if filtered_hospitals.empty:
+        st.warning("No hospitals found in the selected county.")
+    else:
+        st.dataframe(filtered_hospitals[['HOSPITAL_NAME', 'NHIF_OFFICE', 'NHIF_HOSPITAL_CODE']], use_container_width=True)
+
 
     elif(selected == 'Others'):
         
