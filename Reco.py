@@ -173,7 +173,7 @@ def main():
         ) 
         
         if st.button("Predict Diabetes"):
-    prediction = diabetes_model.predict([user_data])[0]  # Assuming binary output: 1 = Diabetes, 0 = No Diabetes
+         prediction = diabetes_model.predict([user_data])[0]  # Assuming binary output: 1 = Diabetes, 0 = No Diabetes
     if prediction == 1:
         st.error("Diabetes Detected!")
     else:
