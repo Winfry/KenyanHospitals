@@ -28,7 +28,6 @@ def predict_diabetes(features):
 # Streamlit app
 def main():
     st.title("Unified Health App")
-# App Title and Description
 st.set_page_config(page_title="Diabetes Prediction & Hospital Recommendation", page_icon="🏥", layout="wide")
 st.title("Diabetes Prediction & Hospital Recommendation System 🩺")    
 
