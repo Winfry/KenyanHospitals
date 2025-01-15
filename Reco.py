@@ -196,10 +196,10 @@ def main():
             # If you have a separate dataset for general hospitals, integrate it here
             filtered_hospitals = data[data['COUNTY'].str.contains(selected_county, case=False)]
 
-    if filtered_hospitals.empty:
-        st.warning("No hospitals found in the selected county.")
-    else:
-        st.dataframe(filtered_hospitals[['HOSPITAL_NAME', 'NHIF_OFFICE', 'NHIF_HOSPITAL_CODE']], use_container_width=True)
+        if filtered_hospitals.empty:
+            st.warning("No hospitals found in the selected county.")
+        else:
+            st.dataframe(filtered_hospitals[['HOSPITAL_NAME', 'NHIF_OFFICE', 'NHIF_HOSPITAL_CODE']], use_container_width=True)
 
 
     elif(selected == 'Others'):
