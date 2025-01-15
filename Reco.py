@@ -241,6 +241,6 @@ if __name__ == "__main__":
 def recommend_hospitals(county, condition="Diabetic"):
     # Filter hospitals based on county and condition (if needed)
     filtered_hospitals = data[data['COUNTY'].str.contains(county, case=False)]
-    if condition == "diabetes":
+    if condition == "Diabetic":
         filtered_hospitals = filtered_hospitals[filtered_hospitals['SPECIALTY'] == 'Diabetes Care']
     return filtered_hospitals[['HOSPITAL_NAME', 'ADDRESS']]    
