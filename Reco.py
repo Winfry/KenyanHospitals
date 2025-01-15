@@ -235,3 +235,12 @@ def main():
             
 if __name__ == "__main__":
     main()
+    
+    
+# Hospital recommendation function
+def recommend_hospitals(county, condition="diabetes"):
+    # Filter hospitals based on county and condition (if needed)
+    filtered_hospitals = hospitals[hospitals['COUNTY'].str.contains(county, case=False)]
+    if condition == "diabetes":
+        filtered_hospitals = filtered_hospitals[filtered_hospitals['SPECIALTY'] == 'Diabetes Care']
+    return filtered_hospitals[['HOSPITAL_NAME', 'ADDRESS']]    
