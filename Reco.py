@@ -119,7 +119,7 @@ def main():
         
         
         st.title('Diabetes Prediction Web App')
-
+        st.write('This web application is designed to predict whether a person is diabetic or not ')
         name = st.text_input('Enter Your Name')
         email = st.text_input('Enter Your Email')
 
