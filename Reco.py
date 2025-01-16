@@ -182,6 +182,8 @@ def main():
         def load_data():
             file_path = "Dialysis-Facilities.xlsx"  # Replace with your file path
             data = pd.read_excel(file_path)
+            data.columns = ['COUNTY', 'NHIF_OFFICE', 'NHIF_HOSPITAL_CODE', 'HOSPITAL_NAME']
+            data = data.iloc[1:]  # Skip the first row with old headers
             return data
         # Main function
         def main():
