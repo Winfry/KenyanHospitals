@@ -191,8 +191,23 @@ def main():
         Based on your diabetes prediction, here are hospital recommendations. Select your county to filter results.
     """)
         # Load the data 
+        def load_data():
+            # Replace this path with the location of your dataset
+            file_path = 'Dialysis-Facilities.xlsx'
+            data = pd.read_excel(file_path)
+            data.columns = ['COUNTY', 'NHIF_OFFICE', 'NHIF_HOSPITAL_CODE', 'HOSPITAL_NAME']
+            data = data.iloc[1:]  # Skip the first row with old headers
+            return data
+        # Load data
+        data = load_data()
+        
         counties = sorted(data['COUNTY'].unique())
         selected_county = st.selectbox("Select County:", counties)
+        if 'data' in locals() and not data.empty:
+            counties = sorted(data['COUNTY'].unique())
+            selected_county = st.selectbox("Select County:", counties)
+        else:
+            st.error("Data not loaded. Please check your dataset.")
 
         if prediction == 1:
             st.subheader("Dialysis Hospitals in Your Area")
