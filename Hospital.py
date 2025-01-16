@@ -91,7 +91,8 @@ def main():
         if not all(value.replace('.', '', 1).isdigit() for value in [Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction]):
             st.error("❗Please enter valid numerical values for the input fields.")
             st.stop()
-
+            
+        #Prediction Button
         if st.button('Predict'):
             diagnosis = predict_diabetes([Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age])
 
