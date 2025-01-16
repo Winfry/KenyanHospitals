@@ -66,9 +66,11 @@ def main():
         st.title('Diabetes Prediction Web App')
         st.write('This web application is designed to predict whether a person is diabetic or not.')
 
+        # Input fields
         name = st.text_input('Enter Your Name')
         email = st.text_input('Enter Your Email')
 
+        #Input fields validation
         if not name or not email:
             st.warning('Please enter both Name and Email to proceed!', icon="⚠️")
             st.stop()
@@ -94,8 +96,11 @@ def main():
             
         #Prediction Button
         if st.button('Predict'):
-            diagnosis = predict_diabetes([Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age])
+            features = [float(Pregnancies), float(Glucose), float(BloodPressure), float(SkinThickness), 
+                        float(Insulin), float(BMI), float(DiabetesPedigreeFunction), Age]
+            diagnosis = predict_diabetes(features)
 
+            # Send a thank-you email with the test result and contact details
             send_thank_you_email(name, email, diagnosis)
 
             with st.spinner('Please wait, loading...'):
