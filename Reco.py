@@ -181,7 +181,7 @@ def main():
         # Function to load data
         def load_data():
             file_path = "C:/Users/Pc/KenyanHospitals/Dialysis-Facilities.xlsx"  # Replace with your file path
-            data = pd.read_excel(file_path)
+            data = pd.read_excel('Dialysis-Facilities.xlsx')
             return data
         # Main function
         def main():
