@@ -178,13 +178,6 @@ def main():
         unsafe_allow_html=True
         ) 
         
-        if st.button("Predict Diabetes"):
-          prediction = diabetes_model.predict([user_data])[0]  # Assuming binary output: 1 = Diabetes, 0 = No Diabetes
-          if prediction == 1:
-            st.error("Diabetes Detected!")
-          else:
-            st.success("No Diabetes Detected!")
-        
         # Function to load data
         def load_data():
             file_path = "C:/Users/Pc/KenyanHospitals/Dialysis-Facilities.xlsx"  # Replace with your file path
