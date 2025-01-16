@@ -184,7 +184,19 @@ def main():
             st.error("Diabetes Detected!")
           else:
             st.success("No Diabetes Detected!")
-
+        
+        # Function to load data
+        def load_data():
+            file_path = "Dialysis-Facilities.xlsx"  # Replace with your file path
+            data = pd.read_excel(file_path)
+            return data
+        # Main function
+        def main():
+            st.title("Hospital Recommendation System")
+        # Load data
+        data = load_data()
+        
+        
         # Section 2: Hospital Recommendation
         st.header("Hospital Recommendation")
         st.markdown("""
