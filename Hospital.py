@@ -120,15 +120,26 @@ def main():
         # Display hospitals based on the prediction
         if diagnosis == "Diabetic":
             st.subheader("Dialysis Hospitals in Your Area")
-            filtered_hospitals = load_data()[load_data()['COUNTY'] == selected_county]
+            filtered_hospitals = load_data()[
+                    (load_data()['COUNTY'] == selected_county) & (load_data()['HOSPITAL_TYPE'] == 'Dialysis')
+                ]
         else:
             st.subheader("General Hospitals in Your Area")
-            filtered_hospitals = load_data()[load_data()['COUNTY'] == selected_county]
+            filtered_hospitals = load_data()[
+                    (load_data()['COUNTY'] == selected_county) & (load_data()['HOSPITAL_TYPE'] == 'General')
+                ]
 
         if filtered_hospitals.empty:
             st.warning("No hospitals found in the selected county.")
         else:
             st.dataframe(filtered_hospitals[['HOSPITAL_NAME', 'NHIF_OFFICE', 'NHIF_HOSPITAL_CODE']], use_container_width=True)
+            
+        st.markdown(
+            """<div style="position: fixed; bottom: 7.6px; left: 10px; right: 10px; text-align: left; color: grey; font-size: 14px;">
+            Made by <span style="font-weight: bold; color: grey;">Winnie</span> 🎈
+            </div>""",
+            unsafe_allow_html=True
+        )        
 
     elif selected == 'Others':
         tab1, tab2, tab3 = st.tabs(["❓Help", "💬 Feedback", "📩 Contact"])
