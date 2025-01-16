@@ -4,6 +4,12 @@ import joblib
 import numpy as np
 from streamlit_option_menu import option_menu
 import pickle
+import time
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+
  
 
 # Load the machine learning model for diabetes prediction
