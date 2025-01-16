@@ -190,7 +190,7 @@ def main():
         st.markdown("""
         Based on your diabetes prediction, here are hospital recommendations. Select your county to filter results.
     """)
-
+        # Load the data 
         counties = sorted(data['COUNTY'].unique())
         selected_county = st.selectbox("Select County:", counties)
 
