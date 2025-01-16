@@ -7,6 +7,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
+from streamlit_option_menu import option_menu
 
 # Constants
 MODEL_PATH = 'trained_model.sav'
