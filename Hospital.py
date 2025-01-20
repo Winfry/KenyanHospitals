@@ -103,6 +103,7 @@ def main():
             # Send a thank-you email with the test result and contact details
             send_thank_you_email(name, email, diagnosis)
 
+            # Display the test result
             with st.spinner('Please wait, loading...'):
                 time.sleep(2)
 
@@ -130,12 +131,12 @@ def main():
         if diagnosis == "Diabetic":
             st.subheader("Dialysis Hospitals in Your Area")
             filtered_hospitals = load_data()[
-                    (load_data()['COUNTY'] == selected_county) & (load_data()['HOSPITAL_TYPE'] == 'Dialysis')
+                    (load_data()['COUNTY'] == selected_county)
                 ]
         else:
             st.subheader("General Hospitals in Your Area")
             filtered_hospitals = load_data()[
-                    (load_data()['COUNTY'] == selected_county) & (load_data()['HOSPITAL_TYPE'] == 'General')
+                    (load_data()['COUNTY'] == selected_county)
                 ]
 
         if filtered_hospitals.empty:
