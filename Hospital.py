@@ -124,13 +124,6 @@ def main():
         unsafe_allow_html=True
         ) 
         
-        # Display prediction
-        st.subheader("Prediction Result")
-        if diagnosis == "Diabetic":
-           st.error("Prediction: You are likely Diabetic.")
-        else:
-           st.success("Prediction: You are not Diabetic.")
-        
         # Hospital Recommendation
         st.header("Hospital Recommendation")
         st.markdown("""
