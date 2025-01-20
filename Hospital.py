@@ -106,8 +106,15 @@ def main():
             # Display the test result
             with st.spinner('Please wait, loading...'):
                 time.sleep(2)
-
-            st.success(f"Test Result: **{diagnosis}**")
+            
+            # Display prediction
+            st.subheader("Prediction Result")
+            if diagnosis == "Diabetic":
+               st.error("Prediction: You are likely Diabetic.")
+            else:
+               st.success("Prediction: Great! You are not Diabetic.")
+    
+            
             st.info('Do check your email for more details, Thank You.', icon="ℹ️")
 
         st.markdown(
