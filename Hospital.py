@@ -134,9 +134,10 @@ def main():
         counties = sorted(load_data()['COUNTY'].unique())
         selected_county = st.selectbox("Select County:", counties)
         
-        
-        
-        
+        # Example: Setting diagnosis based on your prediction logic
+        # Replace with your actual prediction mechanism
+        diagnosis = st.radio("Do you have a diabetes diagnosis?", ["Diabetic", "Non-Diabetic"], index=1)
+
 
         # Display hospitals based on the prediction
         if diagnosis == "Diabetic":
@@ -144,17 +145,14 @@ def main():
             filtered_hospitals = load_data()[
                     (load_data()['COUNTY'] == selected_county)
                 ]
+                if filtered_hospitals.empty:
+                   st.warning("No dialysis hospitals found in the selected county.")
+                else:
+                   st.dataframe(filtered_hospitals[['HOSPITAL_NAME', 'NHIF_OFFICE', 'NHIF_HOSPITAL_CODE']], use_container_width=True) 
         else:
-            st.subheader("General Hospitals in Your Area")
-            filtered_hospitals = load_data()[
-                    (load_data()['COUNTY'] == selected_county)
-                ]
+             st.warning("Hospital recommendations are available only for users predicted as diabetic.")  
+               
 
-        if filtered_hospitals.empty:
-            st.warning("No hospitals found in the selected county.")
-        else:
-            st.dataframe(filtered_hospitals[['HOSPITAL_NAME', 'NHIF_OFFICE', 'NHIF_HOSPITAL_CODE']], use_container_width=True)
-            
         st.markdown(
             """<div style="position: fixed; bottom: 7.6px; left: 10px; right: 10px; text-align: left; color: grey; font-size: 14px;">
             Made by <span style="font-weight: bold; color: grey;">Winnie</span> 🎈
