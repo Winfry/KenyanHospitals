@@ -134,15 +134,7 @@ def main():
         counties = sorted(load_data()['COUNTY'].unique())
         selected_county = st.selectbox("Select County:", counties)
         
-        # Initialize diagnosis with a default value
-        diagnosis = None  # Default value, replace with actual prediction logic
-
-        # Example: Setting diagnosis based on your prediction logic
-        # This is just a placeholder logic; replace with your actual diabetes prediction model
-        # For instance:
-        # diagnosis = predict_diabetes(user_inputs)  # Use your prediction logic here
-        diagnosis = st.radio("Do you have a diabetes diagnosis?", ["Diabetic", "Non-Diabetic"], index=1)
-
+        
         
         
 
