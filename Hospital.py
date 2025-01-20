@@ -147,7 +147,7 @@ def main():
                 ]
             if filtered_hospitals.empty:
                    st.warning("No dialysis hospitals found in the selected county.")
-                else:
+            else:
                    st.dataframe(filtered_hospitals[['HOSPITAL_NAME', 'NHIF_OFFICE', 'NHIF_HOSPITAL_CODE']], use_container_width=True) 
         else:
              st.warning("Hospital recommendations are available only for users predicted as diabetic.")  
