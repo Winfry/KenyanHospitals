@@ -3,4 +3,7 @@ pandas
 openpyxl
 joblib
 streamlit-option-menu
-skelarn
+scikit-learn
+numpy
+matplotlib
+seaborn
