@@ -10,6 +10,8 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import requests
 import logging
+
+# Set up logging
 logging.basicConfig(level=logging.INFO)
 
 # Load the machine learning model for diabetes prediction
