@@ -149,7 +149,30 @@ def main():
     
             
             st.info('Do check your email for more details, Thank You.', icon="ℹ️")
+        
+        elif selected == 'Debugging':
+            st.header("Debugging Predictions")
+            st.write("Use this section to debug model predictions.")
 
+            Pregnancies = st.text_input('Number of Pregnancies (Enter 0 if Male)', "2")
+            Glucose = st.text_input('Glucose Level', "120")
+            BloodPressure = st.text_input('BloodPressure Value', "70")
+            SkinThickness = st.text_input('Skin Thickness Value', "30")
+            Insulin = st.text_input('Insulin Level', "80")
+            BMI = st.text_input('BMI Value', "25.0")
+            DiabetesPedigreeFunction = st.text_input('Diabetes Pedigree Function Value', "0.5")
+            Age = st.slider('Choose your Age', 1, 100, 35)
+
+            if st.button("Debug Predict"):
+                try:
+                   features = [float(Pregnancies), float(Glucose), float(BloodPressure), float(SkinThickness),
+                            float(Insulin), float(BMI), float(DiabetesPedigreeFunction), Age]
+                   st.write("Input Features:", features)
+                   prediction = predict_diabetes(features)
+                   st.write("Model Output:", prediction)
+                except Exception as e:
+                   st.error(f"An error occurred: {e}")
+                   logging.error(f"Debugging error: {e}")
         
         
     elif selected == 'Others':
