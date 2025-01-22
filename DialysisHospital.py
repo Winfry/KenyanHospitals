@@ -16,7 +16,7 @@ data = load_data()
 # App Title and Description
 st.set_page_config(page_title="Hospital Recommendation", page_icon="🏥", layout="wide")
 st.title("Welcome to the Hospital Recommendation System 🏥")
-st.image("Dialysis_Center.jpg", caption="Keeping The Kidneys Healthy!", use_column_width=True)
+st.image("Dialysis_Center.jpg", caption="Keeping The Kidneys Healthy!", use_container_width=True)
 st.markdown("""
     # Welcome to the Hospital Finder App! 🏥
 
