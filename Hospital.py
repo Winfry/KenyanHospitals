@@ -8,6 +8,7 @@ import time
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import requests
 
 # Load the machine learning model for diabetes prediction
 diabetes_model = joblib.load(open('trained_model.sav', 'rb'))
