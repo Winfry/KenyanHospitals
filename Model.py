@@ -9,9 +9,12 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import requests
+import logging
+logging.basicConfig(level=logging.INFO)
 
 # Load the machine learning model for diabetes prediction
 diabetes_model = joblib.load(open('trained_model.sav', 'rb'))
+
 
 # Load the dataset
 def load_data():
@@ -23,7 +26,7 @@ def load_data():
 
 # Function to predict diabetes
 def predict_diabetes(features):
-    prediction = diabetes_model.predict([features])
+    prediction = diabetes_model.predict(np.array(features).reshape(1, -1))
     return prediction[0]
 
 # Function to send a thank-you email with test result and contact details
@@ -100,7 +103,9 @@ def main():
             features = [float(Pregnancies), float(Glucose), float(BloodPressure), float(SkinThickness), 
                         float(Insulin), float(BMI), float(DiabetesPedigreeFunction), Age]
             diagnosis = predict_diabetes(features)
-
+            
+            
+            
             # Send a thank-you email with the test result and contact details
             send_thank_you_email(name, email, diagnosis)
 
