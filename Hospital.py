@@ -42,7 +42,7 @@ def send_thank_you_email(name, email, diagnosis):
     
     subject = "Thank You for Visiting Diabetes Prediction Web Application!"
     color = "red" if diagnosis == "Diabetic" else "green"
-    body = f"Dear {name},<br><br>Thank you for visiting my Diabetes Prediction Web Application!<br><br><b>Test Result:</b> <b style='color:{color}'>{diagnosis}</b>{banner}{additional_tips}<br><br>WebApp URL: {webpapp_url}<br><br>Connect: {linkedin_profile}<br><br><br>Best regards,<br>Akshay Ravella"
+    body = f"Dear {name},<br><br>Thank you for visiting the Diabetes Prediction Web Application!<br><br><b>Test Result:</b> <b style='color:{color}'>{diagnosis}</b>{banner}{additional_tips}<br><br>WebApp URL: {webpapp_url}<br><br>Connect: {linkedin_profile}<br><br><br>Best regards,<br>Akshay Ravella"
 
     message = MIMEMultipart()
     message["From"] = f"{sender_name} <{sender_email}>"
@@ -120,7 +120,7 @@ def main():
 
         st.markdown(
         """<div style="position: fixed; bottom: 7.6px; left: 10px; right: 10px; text-align: left; color: grey; font-size: 14px;">
-        Made by <span style="font-weight: bold; color: grey;">Akshay</span>🎈
+        Made by <span style="font-weight: bold; color: grey;">Winfry</span>🎈
         </div>""",
         unsafe_allow_html=True
         ) 
