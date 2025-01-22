@@ -30,7 +30,7 @@ def predict_diabetes(features):
 def send_thank_you_email(name, email, diagnosis):
     sender_name = "Winfry Nyarangi"
     sender_email = "Winfrynyarangi@gmail.com"  
-    sender_password = "fuyq wyjl cgnn wbpw"  
+    sender_password = "wzfe uwfz vqsz ltmr"  
 
     linkedin_profile = "https://www.linkedin.com/in/winfry-nyarangi-213a20225/"
     webpapp_url = "https://diabetespredictionsystem-by-akshay.streamlit.app/"
