@@ -30,7 +30,7 @@ def predict_diabetes(features):
 def send_thank_you_email(name, email, diagnosis):
     sender_name = "Winfry Nyarangi"
     sender_email = "Winfrynyarangi@gmail.com"  
-    sender_password = "fuyq wyjl cgnn wbpw"  
+    sender_password = "zglj lqmq jqkw cioy"  
 
     linkedin_profile = "https://www.linkedin.com/in/winfry-nyarangi-213a20225/"
     webpapp_url = "https://diabetespredictionsystem-by-akshay.streamlit.app/"
@@ -112,6 +112,29 @@ def main():
             st.subheader("Prediction Result")
             if diagnosis == "Diabetic":
                st.error("Prediction: You are likely Diabetic.")
+               
+               
+               # Hospital Recommendation
+               st.header("Hospital Recommendation")
+               st.markdown("""
+               Based on your diabetes prediction, here are hospital recommendations. Select your county to filter results.
+               """)
+
+               counties = sorted(load_data()['COUNTY'].unique())
+               selected_county = st.selectbox("Select County:", counties)
+
+               # Display hospitals based on the prediction
+               filtered_hospitals = load_data()[
+                   (load_data()['COUNTY'] == selected_county)
+               ]
+               if filtered_hospitals.empty:
+                   st.warning("No dialysis hospitals found in the selected county.")
+               else:
+                  st.dataframe(filtered_hospitals[['HOSPITAL_NAME', 'NHIF_OFFICE', 'NHIF_HOSPITAL_CODE']], use_container_width=True)
+               
+               
+               
+               
             else:
                st.success("Prediction: Great! You are not Diabetic.")
     
