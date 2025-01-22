@@ -69,7 +69,7 @@ def send_thank_you_email(name, email, diagnosis):
 # Streamlit app
 def main():
     st.set_page_config(page_title="Diabetes Prediction & Hospital Recommendation", page_icon="🏥", layout="wide")
-    st.title("Diabetes Prediction & Hospital Recommendation System 🩺")
+    st.title("Diabetes Prediction & Hospital Recommendation System 🩺🐞")
 
     with st.sidebar:
         selected = option_menu("Menu", ["Home", 'Others'], icons=['house', 'three-dots'], default_index=0)
