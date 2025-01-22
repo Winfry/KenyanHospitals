@@ -183,7 +183,7 @@ def main():
                     st.error("Failed to send message, Please try again.")
         
         with tab3:
-            st.write("Connect: [LinkedIn Profile](https://www.linkedin.com/in/akshay-ravella)")
+            st.write("Connect: [LinkedIn Profile](https://www.linkedin.com/in/winfry-nyarangi-213a20225/)")
             st.write("Email: [Winfrynyarangi@gmail.com](mailto:Winfrynyarangi@gmail.com)")
             st.image('https://pngimg.com/d/thank_you_PNG88.png', width=220)
             st.markdown("""<div style="position: fixed; bottom: 7.6px; left: 10px; right: 10px; text-align: left; color: grey; font-size: 14px;">Made by <span style="font-weight: bold; color: grey;">Akshay</span>🎈</div>""", unsafe_allow_html=True)
