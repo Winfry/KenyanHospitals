@@ -82,7 +82,7 @@ if filtered_data.empty:
 # Add a reset button
 if st.sidebar.button("🔄 Reset Filters"):
     # Simulate resetting by reloading the app
-    st.experimental_set_query_params(rerun=str(True))   
+    st.query_params(rerun=str(True))   
  
 # Sidebar footer with an icon or note
 st.sidebar.markdown("""
