@@ -28,8 +28,14 @@ def load_data():
 
 # Function to predict diabetes
 def predict_diabetes(features):
-    prediction = diabetes_model.predict(np.array(features).reshape(1, -1))
-    return prediction[0]
+    logging.info(f"Features received for prediction: {features}")
+    try:
+        prediction = diabetes_model.predict([features])
+        logging.info(f"Prediction result: {prediction}")
+        return prediction[0]
+    except Exception as e:
+        logging.error(f"Error during prediction: {e}")
+        return "Error"
 
 # Function to send a thank-you email with test result and contact details
 def send_thank_you_email(name, email, diagnosis):
