@@ -31,7 +31,7 @@ def send_thank_you_email(name, email, diagnosis):
     sender_email = "akshayravella1@gmail.com"  
     sender_password = "fuyq wyjl cgnn wbpw"  
 
-    linkedin_profile = "https://www.linkedin.com/in/akshay-ravella"
+    linkedin_profile = "https://www.linkedin.com/in/winfry-nyarangi-213a20225/"
     webpapp_url = "https://diabetespredictionsystem-by-akshay.streamlit.app/"
     
     banner = """<img src="{}" alt="Banner Image" style="max-width: 100%; height: auto; margin-top: 20px;">""".format('https://d2jx2rerrg6sh3.cloudfront.net/images/Article_Images/ImageForArticle_22744_16565132428524067.jpg')
