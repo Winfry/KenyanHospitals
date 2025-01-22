@@ -28,8 +28,8 @@ def predict_diabetes(features):
 
 # Function to send a thank-you email with test result and contact details
 def send_thank_you_email(name, email, diagnosis):
-    sender_name = "Akshay Ravella"
-    sender_email = "akshayravella1@gmail.com"  
+    sender_name = "Winfry Nyarangi"
+    sender_email = "Winfrynyarangi@gmail.com"  
     sender_password = "fuyq wyjl cgnn wbpw"  
 
     linkedin_profile = "https://www.linkedin.com/in/winfry-nyarangi-213a20225/"
